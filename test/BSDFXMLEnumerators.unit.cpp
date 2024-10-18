@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "BSDFXML/Enumerators.hpp"
+#include "bsdfdata/Enumerators.hpp"
 
 using namespace BSDFData;
 

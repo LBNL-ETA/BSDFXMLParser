@@ -1,13 +1,13 @@
 set( CMAKE_INCLUDE_CURRENT_DIR_IN_INTERFACE ON )
 
 add_library( ${LIB_NAME}
-        bsdfxml/Data.hpp
-        bsdfxml/Parser.cpp
-        bsdfxml/Parser.hpp
-        bsdfxml/Enumerators.hpp
-        bsdfxml/Enumerators.cpp
-        bsdfxml/EnumSerializers.hpp
-        bsdfxml/Serializers.hpp)
+        bsdfdata/Data.hpp
+        bsdfdata/Parser.cpp
+        bsdfdata/Parser.hpp
+        bsdfdata/Enumerators.hpp
+        bsdfdata/Enumerators.cpp
+        bsdfdata/EnumSerializers.hpp
+        bsdfdata/Serializers.hpp)
 
 target_link_libraries(${LIB_NAME} PRIVATE xmlParser)
 target_link_libraries(${LIB_NAME} PRIVATE FileParse)

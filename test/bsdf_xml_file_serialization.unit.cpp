@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <filesystem>
 
-#include "BSDFXML/Parser.hpp"
+#include "bsdfdata/Parser.hpp"
 
 #include "test/helper/BSDFXML/TestHelper.hpp"
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <BSDFXML/Data.hpp>
+#include <bsdfdata/Data.hpp>
 
 namespace Helper
 {
