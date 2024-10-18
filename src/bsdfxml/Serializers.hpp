@@ -16,28 +16,28 @@
 
 #include "EnumSerializers.hpp"
 
-namespace BSDFXML
+namespace BSDFData
 {
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFXML::Thickness & thickness)
+    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFData::Thickness & thickness)
     {
         using FileParse::operator>>;   // operators for basic C++ types are in the FileParse
                                        // namespace
 
-        FileParse::loadAttribute<NodeAdapter, BSDFXML::LengthUnit>(
-          node, "unit", thickness.unit, BSDFXML::LengthUnitFromString);
+        FileParse::loadAttribute<NodeAdapter, BSDFData::LengthUnit>(
+          node, "unit", thickness.unit, BSDFData::LengthUnitFromString);
         node >> thickness.value;
 
         return node;
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::Thickness & thickness)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::Thickness & thickness)
     {
         using FileParse::operator<<;   // operators for basic C++ types are in the FileParse
                                        // namespace
 
-        FileParse::saveAttribute<NodeAdapter, BSDFXML::LengthUnit>(
+        FileParse::saveAttribute<NodeAdapter, BSDFData::LengthUnit>(
           node, "unit", thickness.unit, LengthUnitToString);
         node << thickness.value;
 
@@ -45,12 +45,12 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFXML::Wavelength & wavelength)
+    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFData::Wavelength & wavelength)
     {
         using FileParse::operator>>;   // operators for basic C++ types are in the FileParse
                                        // namespace
 
-        FileParse::loadAttribute<NodeAdapter, BSDFXML::WavelengthUnit>(
+        FileParse::loadAttribute<NodeAdapter, BSDFData::WavelengthUnit>(
           node, "unit", wavelength.unit, WavelengthUnitFromString);
         FileParse::loadAttribute(node, "type", wavelength.type);
         node >> wavelength.value;
@@ -59,11 +59,11 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::Wavelength & wavelength)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::Wavelength & wavelength)
     {
         using FileParse::operator<<;
 
-        FileParse::saveAttribute<NodeAdapter, BSDFXML::WavelengthUnit>(
+        FileParse::saveAttribute<NodeAdapter, BSDFData::WavelengthUnit>(
           node, "unit", wavelength.unit, WavelengthUnitToString);
         FileParse::saveAttribute(node, "type", wavelength.type);
         node << wavelength.value;
@@ -73,7 +73,7 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     const NodeAdapter & operator>>(const NodeAdapter & node,
-                                   BSDFXML::OpticalProperties & opticalProperties)
+                                   BSDFData::OpticalProperties & opticalProperties)
     {
         node >> FileParse::Child{"Transmittance", opticalProperties.transmittance};
         node >> FileParse::Child{"ReflectanceFront", opticalProperties.reflectanceFront};
@@ -85,7 +85,7 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     NodeAdapter & operator<<(NodeAdapter & node,
-                             const BSDFXML::OpticalProperties & opticalProperties)
+                             const BSDFData::OpticalProperties & opticalProperties)
     {
         node << FileParse::Child{"Transmittance", opticalProperties.transmittance};
         node << FileParse::Child{"ReflectanceFront", opticalProperties.reflectanceFront};
@@ -96,7 +96,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFXML::Material & material)
+    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFData::Material & material)
     {
         using FileParse::Child;
         node >> Child{"Name", material.name};
@@ -123,7 +123,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::Material & material)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::Material & material)
     {
         using FileParse::Child;
 
@@ -151,26 +151,26 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFXML::Length & length)
+    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFData::Length & length)
     {
         using FileParse::operator>>;   // operators for basic C++ types are in the FileParse
                                        // namespace
 
         node >> length.value;
-        FileParse::loadAttribute<NodeAdapter, BSDFXML::LengthUnit>(
+        FileParse::loadAttribute<NodeAdapter, BSDFData::LengthUnit>(
           node, "unit", length.unit, LengthUnitFromString);
 
         return node;
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::Length & length)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::Length & length)
     {
         using FileParse::operator<<;   // operators for basic C++ types are in the FileParse
                                        // namespace
 
         node << length.value;
-        FileParse::saveAttribute<NodeAdapter, BSDFXML::LengthUnit>(
+        FileParse::saveAttribute<NodeAdapter, BSDFData::LengthUnit>(
           node, "unit", length.unit, LengthUnitToString);
 
         return node;
@@ -178,35 +178,35 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     const NodeAdapter & operator>>(const NodeAdapter & node,
-                                   BSDFXML::LengthWithCavity & lengthWithCavity)
+                                   BSDFData::LengthWithCavity & lengthWithCavity)
     {
         using FileParse::operator>>;   // operators for basic C++ types are in the FileParse
                                        // namespace
 
         node >> lengthWithCavity.value;
         FileParse::loadAttribute(node, "cavity", lengthWithCavity.cavity);
-        FileParse::loadAttribute<NodeAdapter, BSDFXML::LengthUnit>(
+        FileParse::loadAttribute<NodeAdapter, BSDFData::LengthUnit>(
           node, "unit", lengthWithCavity.unit, LengthUnitFromString);
 
         return node;
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::LengthWithCavity & lengthWithCavity)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::LengthWithCavity & lengthWithCavity)
     {
         using FileParse::operator<<;   // operators for basic C++ types are in the FileParse
                                        // namespace
 
         node << lengthWithCavity.value;
         FileParse::saveAttribute(node, "cavity", lengthWithCavity.cavity);
-        FileParse::saveAttribute<NodeAdapter, BSDFXML::LengthUnit>(
+        FileParse::saveAttribute<NodeAdapter, BSDFData::LengthUnit>(
           node, "unit", lengthWithCavity.unit, LengthUnitToString);
 
         return node;
     }
 
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFXML::Geometry & geometry)
+    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFData::Geometry & geometry)
     {
         FileParse::loadAttribute<NodeAdapter, LengthUnit>(
           node, "unit", geometry.unit, LengthUnitFromString);
@@ -236,7 +236,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::Geometry & geometry)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::Geometry & geometry)
     {
         FileParse::saveAttribute<NodeAdapter, LengthUnit>(
           node, "unit", geometry.unit, LengthUnitToString);
@@ -266,7 +266,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFXML::ThetaBounds & thetaBounds)
+    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFData::ThetaBounds & thetaBounds)
     {
         node >> FileParse::Child{"LowerTheta", thetaBounds.lowerTheta};
         node >> FileParse::Child{"UpperTheta", thetaBounds.upperTheta};
@@ -276,7 +276,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::ThetaBounds & thetaBounds)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::ThetaBounds & thetaBounds)
     {
         node << FileParse::Child{"LowerTheta", thetaBounds.lowerTheta};
         node << FileParse::Child{"UpperTheta", thetaBounds.upperTheta};
@@ -287,7 +287,7 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     const NodeAdapter & operator>>(const NodeAdapter & node,
-                                   BSDFXML::AngleBasisBlock & angleBasisBlock)
+                                   BSDFData::AngleBasisBlock & angleBasisBlock)
     {
         node >> FileParse::Child{"Theta", angleBasisBlock.theta};
         node >> FileParse::Child{"Phi", angleBasisBlock.phi};
@@ -300,7 +300,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::AngleBasisBlock & angleBasisBlock)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::AngleBasisBlock & angleBasisBlock)
     {
         node << FileParse::Child{"Theta", angleBasisBlock.theta};
         node << FileParse::Child{"Phi", angleBasisBlock.phi};
@@ -313,7 +313,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFXML::AngleBasis & angleBasis)
+    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFData::AngleBasis & angleBasis)
     {
         node >> FileParse::Child{"AngleBasisName", angleBasis.name};
         node >> FileParse::Child{"AngleBasisBlock", angleBasis.blocks};
@@ -322,7 +322,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::AngleBasis & angleBasis)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::AngleBasis & angleBasis)
     {
         node << FileParse::Child{"AngleBasisName", angleBasis.name};
         node << FileParse::Child{"AngleBasisBlock", angleBasis.blocks};
@@ -332,7 +332,7 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     const NodeAdapter & operator>>(const NodeAdapter & node,
-                                   BSDFXML::DataDefinition & dataDefinition)
+                                   BSDFData::DataDefinition & dataDefinition)
     {
         node >> FileParse::Child{"IncidentDataStructure", dataDefinition.incidentDataStructure};
         node >> FileParse::Child{"AngleBasis", dataDefinition.angleBasis};
@@ -342,7 +342,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::DataDefinition & dataDefinition)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::DataDefinition & dataDefinition)
     {
         node << FileParse::Child{"IncidentDataStructure", dataDefinition.incidentDataStructure};
         node << FileParse::Child{"AngleBasis", dataDefinition.angleBasis};
@@ -392,9 +392,9 @@ namespace BSDFXML
     }   // namespace
 
     /// Parses a string representation of scattering data into a vector of vectors of doubles.
-    inline BSDFXML::ScatteringData parseScatteringData(const std::string & value)
+    inline BSDFData::ScatteringData parseScatteringData(const std::string & value)
     {
-        BSDFXML::ScatteringData scatteringData;
+        BSDFData::ScatteringData scatteringData;
         std::istringstream inputStream(value);
         std::string line;
 
@@ -412,7 +412,7 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     const NodeAdapter & operator>>(const NodeAdapter & node,
-                                   BSDFXML::ScatteringData & scatteringData)
+                                   BSDFData::ScatteringData & scatteringData)
     {
         std::string value;
         node >> FileParse::Child{"ScatteringData", value};
@@ -434,7 +434,7 @@ namespace BSDFXML
     }   // anonymous namespace
 
     /// Serializes the entire ScatteringData into a single string.
-    inline std::string serializeScatteringData(const BSDFXML::ScatteringData & scatteringData)
+    inline std::string serializeScatteringData(const BSDFData::ScatteringData & scatteringData)
     {
         std::ostringstream outputStream;
 
@@ -449,7 +449,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::ScatteringData & scatteringData)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::ScatteringData & scatteringData)
     {
         const std::string value{serializeScatteringData(scatteringData)};
         node << FileParse::Child{"ScatteringData", value};
@@ -459,7 +459,7 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     const NodeAdapter & operator>>(const NodeAdapter & node,
-                                   BSDFXML::WavelengthDataBlock & wavelengthDataBlock)
+                                   BSDFData::WavelengthDataBlock & wavelengthDataBlock)
     {
         node >> FileParse::Child{"WavelengthDataDirection",
                                  wavelengthDataBlock.wavelengthDataDirection};
@@ -476,7 +476,7 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     NodeAdapter & operator<<(NodeAdapter & node,
-                             const BSDFXML::WavelengthDataBlock & wavelengthDataBlock)
+                             const BSDFData::WavelengthDataBlock & wavelengthDataBlock)
     {
         node << FileParse::Child{"WavelengthDataDirection",
                                  wavelengthDataBlock.wavelengthDataDirection};
@@ -493,7 +493,7 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     const NodeAdapter & operator>>(const NodeAdapter & node,
-                                   BSDFXML::WavelengthData & wavelengthData)
+                                   BSDFData::WavelengthData & wavelengthData)
     {
         node >> FileParse::Child{"LayerNumber", wavelengthData.layerNumber};
         node >> FileParse::Child{"Angle", wavelengthData.angle};
@@ -507,7 +507,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::WavelengthData & wavelengthData)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::WavelengthData & wavelengthData)
     {
         node << FileParse::Child{"LayerNumber", wavelengthData.layerNumber};
         node << FileParse::Child{"Angle", wavelengthData.angle};
@@ -521,7 +521,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFXML::Layer & layer)
+    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFData::Layer & layer)
     {
         node >> FileParse::Child{"Material", layer.material};
         node >> FileParse::Child{"Geometry", layer.geometry};
@@ -532,7 +532,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::Layer & layer)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::Layer & layer)
     {
         node << FileParse::Child{"Material", layer.material};
         node << FileParse::Child{"Geometry", layer.geometry};
@@ -543,7 +543,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFXML::Optical & optical)
+    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFData::Optical & optical)
     {
         node >> FileParse::Child{"Layer", optical.layer};
 
@@ -551,7 +551,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::Optical & optical)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::Optical & optical)
     {
         node << FileParse::Child{"Layer", optical.layer};
 
@@ -559,7 +559,8 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFXML::WindowElement & windowElement)
+    const NodeAdapter & operator>>(const NodeAdapter & node,
+                                   BSDFData::WindowElement & windowElement)
     {
         node >> FileParse::Child{"WindowElementType", windowElement.windowElementType};
         node >> FileParse::Child{"FileType", windowElement.fileType};
@@ -570,7 +571,7 @@ namespace BSDFXML
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::WindowElement & windowElement)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::WindowElement & windowElement)
     {
         node << FileParse::Child{"WindowElementType", windowElement.windowElementType};
         node << FileParse::Child{"FileType", windowElement.fileType};

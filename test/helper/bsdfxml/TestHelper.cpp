@@ -5,14 +5,14 @@
 
 namespace Helper
 {
-    void compareThickness(const BSDFXML::Thickness & expected, const BSDFXML::Thickness & actual)
+    void compareThickness(const BSDFData::Thickness & expected, const BSDFData::Thickness & actual)
     {
         EXPECT_DOUBLE_EQ(expected.value, actual.value);
         EXPECT_EQ(expected.unit, actual.unit);
     }
 
-    void compareThickness(const std::optional<BSDFXML::Thickness> & expected,
-                          const std::optional<BSDFXML::Thickness> & actual)
+    void compareThickness(const std::optional<BSDFData::Thickness> & expected,
+                          const std::optional<BSDFData::Thickness> & actual)
     {
         if(expected.has_value())
         {
@@ -25,15 +25,15 @@ namespace Helper
         }
     }
 
-    void compareWavelength(const BSDFXML::Wavelength & expected, const BSDFXML::Wavelength & actual)
+    void compareWavelength(const BSDFData::Wavelength & expected, const BSDFData::Wavelength & actual)
     {
         EXPECT_EQ(expected.value, actual.value);
         EXPECT_EQ(expected.unit, actual.unit);
         compareOptional(expected.type, actual.type);
     }
 
-    void compareWavelength(const std::optional<BSDFXML::Wavelength> & expected,
-                                   const std::optional<BSDFXML::Wavelength> & actual)
+    void compareWavelength(const std::optional<BSDFData::Wavelength> & expected,
+                                   const std::optional<BSDFData::Wavelength> & actual)
     {
         if(expected.has_value())
         {
@@ -46,7 +46,7 @@ namespace Helper
         }
     }
 
-    void compareMaterial(const BSDFXML::Material & expected, const BSDFXML::Material & actual)
+    void compareMaterial(const BSDFData::Material & expected, const BSDFData::Material & actual)
     {
         EXPECT_EQ(expected.name, actual.name);
 
@@ -70,16 +70,16 @@ namespace Helper
         compareOptional(actual.height, expected.height);
     }
 
-    void compareThetaBounds(const BSDFXML::ThetaBounds & expected,
-                            const BSDFXML::ThetaBounds & actual)
+    void compareThetaBounds(const BSDFData::ThetaBounds & expected,
+                            const BSDFData::ThetaBounds & actual)
     {
         compareOptional(expected.lowerTheta, actual.lowerTheta);
         compareOptional(expected.upperTheta, actual.upperTheta);
         compareOptional(expected.comments, actual.comments);
     }
 
-    void compareBounds(const std::optional<std::variant<double, BSDFXML::ThetaBounds>> & expected,
-                       const std::optional<std::variant<double, BSDFXML::ThetaBounds>> & actual)
+    void compareBounds(const std::optional<std::variant<double, BSDFData::ThetaBounds>> & expected,
+                       const std::optional<std::variant<double, BSDFData::ThetaBounds>> & actual)
     {
         if(expected.has_value())
         {
@@ -91,9 +91,9 @@ namespace Helper
             }
             else
             {
-                ASSERT_TRUE(std::holds_alternative<BSDFXML::ThetaBounds>(actual.value()));
-                compareThetaBounds(std::get<BSDFXML::ThetaBounds>(expected.value()),
-                                   std::get<BSDFXML::ThetaBounds>(actual.value()));
+                ASSERT_TRUE(std::holds_alternative<BSDFData::ThetaBounds>(actual.value()));
+                compareThetaBounds(std::get<BSDFData::ThetaBounds>(expected.value()),
+                                   std::get<BSDFData::ThetaBounds>(actual.value()));
             }
         }
         else
@@ -102,8 +102,8 @@ namespace Helper
         }
     }
 
-    void compareAngleBasisBlock(const BSDFXML::AngleBasisBlock & expected,
-                                const BSDFXML::AngleBasisBlock & actual)
+    void compareAngleBasisBlock(const BSDFData::AngleBasisBlock & expected,
+                                const BSDFData::AngleBasisBlock & actual)
     {
         EXPECT_DOUBLE_EQ(expected.theta, actual.theta);
         compareOptional(expected.phi, actual.phi);
@@ -112,7 +112,7 @@ namespace Helper
         compareOptional(expected.comments, actual.comments);
     }
 
-    void compareAngleBasis(const BSDFXML::AngleBasis & expected, const BSDFXML::AngleBasis & actual)
+    void compareAngleBasis(const BSDFData::AngleBasis & expected, const BSDFData::AngleBasis & actual)
     {
         EXPECT_EQ(expected.name, actual.name);
         ASSERT_EQ(expected.blocks.size(), actual.blocks.size());
@@ -122,15 +122,15 @@ namespace Helper
         }
     }
 
-    void compareDataDefinition(const BSDFXML::DataDefinition & expected,
-                               const BSDFXML::DataDefinition & actual)
+    void compareDataDefinition(const BSDFData::DataDefinition & expected,
+                               const BSDFData::DataDefinition & actual)
     {
         EXPECT_EQ(expected.incidentDataStructure, actual.incidentDataStructure);
         compareAngleBasis(expected.angleBasis, actual.angleBasis);
     }
 
-    void compareScatteringData(const BSDFXML::ScatteringData & expected,
-                               const BSDFXML::ScatteringData & actual)
+    void compareScatteringData(const BSDFData::ScatteringData & expected,
+                               const BSDFData::ScatteringData & actual)
     {
         ASSERT_EQ(expected.size(), actual.size());
         for(size_t i = 0; i < expected.size(); ++i)
@@ -139,8 +139,8 @@ namespace Helper
         }
     }
 
-    void compareWavelengthDataBlock(const BSDFXML::WavelengthDataBlock & expected,
-                                    const BSDFXML::WavelengthDataBlock & actual)
+    void compareWavelengthDataBlock(const BSDFData::WavelengthDataBlock & expected,
+                                    const BSDFData::WavelengthDataBlock & actual)
     {
         compareOptional(expected.wavelengthDataDirection, actual.wavelengthDataDirection);
         compareOptional(expected.columnAngleBasis, actual.columnAngleBasis);
@@ -149,8 +149,8 @@ namespace Helper
         compareScatteringData(expected.scatteringData, actual.scatteringData);
     }
 
-    void compareWavelengthData(const BSDFXML::WavelengthData & expected,
-                               const BSDFXML::WavelengthData & actual)
+    void compareWavelengthData(const BSDFData::WavelengthData & expected,
+                               const BSDFData::WavelengthData & actual)
     {
         compareOptional(expected.layerNumber, actual.layerNumber);
         compareOptional(expected.angle, actual.angle);

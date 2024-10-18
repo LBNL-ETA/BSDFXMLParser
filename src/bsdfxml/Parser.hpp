@@ -5,7 +5,7 @@
 
 #include "Data.hpp"
 
-namespace BSDFXML
+namespace BSDFData
 {
     std::optional<WindowElement> loadWindowElementFromFile(std::string_view fileName);
     int saveToFile(const WindowElement & model, std::string_view fileName);

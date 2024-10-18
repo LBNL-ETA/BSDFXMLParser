@@ -4,7 +4,7 @@
 
 #include "Enumerators.hpp"
 
-namespace BSDFXML
+namespace BSDFData
 {
     const std::array<std::string, 4> WindowElementTypeStrings = {
       "Unknown", "System", "Layer", "Material"};

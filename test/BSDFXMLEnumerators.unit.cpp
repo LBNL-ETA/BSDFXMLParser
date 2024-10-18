@@ -2,7 +2,7 @@
 
 #include "BSDFXML/Enumerators.hpp"
 
-using namespace BSDFXML;
+using namespace BSDFData;
 
 TEST(EnumConversionTest, WindowElementTypeToString)
 {

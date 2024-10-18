@@ -7,7 +7,7 @@
 
 #include "Enumerators.hpp"
 
-namespace BSDFXML
+namespace BSDFData
 {
     struct Thickness
     {

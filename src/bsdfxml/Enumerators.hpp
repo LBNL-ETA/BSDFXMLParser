@@ -6,7 +6,7 @@
 
 #include <string>
 
-namespace BSDFXML
+namespace BSDFData
 {
     enum class WindowElementType
     {

@@ -4,11 +4,11 @@
 
 #include "Enumerators.hpp"
 
-namespace BSDFXML
+namespace BSDFData
 {
     template<typename NodeAdapter>
     const NodeAdapter & operator>>(const NodeAdapter & node,
-                                   BSDFXML::WindowElementType & windowElementType)
+                                   BSDFData::WindowElementType & windowElementType)
     {
         return FileParse::deserializeEnum<NodeAdapter, WindowElementType>(
           node, windowElementType, windowElementTypeFromString);
@@ -16,21 +16,21 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     NodeAdapter & operator<<(NodeAdapter & node,
-                             const BSDFXML::WindowElementType & windowElementType)
+                             const BSDFData::WindowElementType & windowElementType)
     {
         return FileParse::serializeEnum<NodeAdapter, WindowElementType>(
           node, windowElementType, windowElementTypeToString);
     }
 
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFXML::DeviceType & deviceType)
+    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFData::DeviceType & deviceType)
     {
         return FileParse::deserializeEnum<NodeAdapter, DeviceType>(
           node, deviceType, DeviceTypeFromString);
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::DeviceType & deviceType)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::DeviceType & deviceType)
     {
         return FileParse::serializeEnum<NodeAdapter, DeviceType>(
           node, deviceType, DeviceTypeToString);
@@ -38,7 +38,7 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     const NodeAdapter & operator>>(const NodeAdapter & node,
-                                   BSDFXML::IncidentDataStructure & incidentDataStructure)
+                                   BSDFData::IncidentDataStructure & incidentDataStructure)
     {
         return FileParse::deserializeEnum<NodeAdapter, IncidentDataStructure>(
           node, incidentDataStructure, IncidentDataStructureFromString);
@@ -46,7 +46,7 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     NodeAdapter & operator<<(NodeAdapter & node,
-                             const BSDFXML::IncidentDataStructure & incidentDataStructure)
+                             const BSDFData::IncidentDataStructure & incidentDataStructure)
     {
         return FileParse::serializeEnum<NodeAdapter, IncidentDataStructure>(
           node, incidentDataStructure, IncidentDataStructureToString);
@@ -54,7 +54,7 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     const NodeAdapter & operator>>(const NodeAdapter & node,
-                                   BSDFXML::WavelengthDataDirection & wavelengthDataDirection)
+                                   BSDFData::WavelengthDataDirection & wavelengthDataDirection)
     {
         return FileParse::deserializeEnum<NodeAdapter, WavelengthDataDirection>(
           node, wavelengthDataDirection, WavelengthDataDirectionFromString);
@@ -62,7 +62,7 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     NodeAdapter & operator<<(NodeAdapter & node,
-                             const BSDFXML::WavelengthDataDirection & wavelengthDataDirection)
+                             const BSDFData::WavelengthDataDirection & wavelengthDataDirection)
     {
         return FileParse::serializeEnum<NodeAdapter, WavelengthDataDirection>(
           node, wavelengthDataDirection, WavelengthDataDirectionToString);
@@ -70,7 +70,7 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     const NodeAdapter & operator>>(const NodeAdapter & node,
-                                   BSDFXML::ScatteringDataType & scatteringDataType)
+                                   BSDFData::ScatteringDataType & scatteringDataType)
     {
         return FileParse::deserializeEnum<NodeAdapter, ScatteringDataType>(
           node, scatteringDataType, ScatteringDataTypeFromString);
@@ -78,49 +78,49 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     NodeAdapter & operator<<(NodeAdapter & node,
-                             const BSDFXML::ScatteringDataType & scatteringDataType)
+                             const BSDFData::ScatteringDataType & scatteringDataType)
     {
         return FileParse::serializeEnum<NodeAdapter, ScatteringDataType>(
           node, scatteringDataType, ScatteringDataTypeToString);
     }
 
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFXML::FileType & fileType)
+    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFData::FileType & fileType)
     {
         return FileParse::deserializeEnum<NodeAdapter, FileType>(
           node, fileType, FileTypeFromString);
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::FileType & fileType)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::FileType & fileType)
     {
         return FileParse::serializeEnum<NodeAdapter, FileType>(node, fileType, FileTypeToString);
     }
 
     template<typename NodeAdapter>
     const NodeAdapter & operator>>(const NodeAdapter & node,
-                                   BSDFXML::WavelengthUnit & wavelengthUnit)
+                                   BSDFData::WavelengthUnit & wavelengthUnit)
     {
         return FileParse::deserializeEnum<NodeAdapter, WavelengthUnit>(
           node, wavelengthUnit, WavelengthUnitFromString);
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::WavelengthUnit & wavelengthUnit)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::WavelengthUnit & wavelengthUnit)
     {
         return FileParse::serializeEnum<NodeAdapter, WavelengthUnit>(
           node, wavelengthUnit, WavelengthUnitToString);
     }
 
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFXML::LengthUnit & lengthUnit)
+    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFData::LengthUnit & lengthUnit)
     {
         return FileParse::deserializeEnum<NodeAdapter, LengthUnit>(
           node, lengthUnit, LengthUnitFromString);
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::LengthUnit & lengthUnit)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::LengthUnit & lengthUnit)
     {
         return FileParse::serializeEnum<NodeAdapter, LengthUnit>(
           node, lengthUnit, LengthUnitToString);
@@ -128,14 +128,14 @@ namespace BSDFXML
 
     template<typename NodeAdapter>
     const NodeAdapter & operator>>(const NodeAdapter & node,
-                                   BSDFXML::ConductivityUnit & conductivityUnit)
+                                   BSDFData::ConductivityUnit & conductivityUnit)
     {
         return FileParse::deserializeEnum<NodeAdapter, ConductivityUnit>(
           node, conductivityUnit, ConductivityUnitFromString);
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFXML::ConductivityUnit & conductivityUnit)
+    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::ConductivityUnit & conductivityUnit)
     {
         return FileParse::serializeEnum<NodeAdapter, ConductivityUnit>(
           node, conductivityUnit, ConductivityUnitToString);

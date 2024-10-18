@@ -4,7 +4,7 @@
 #include "Parser.hpp"
 #include "Serializers.hpp"
 
-namespace BSDFXML
+namespace BSDFData
 {
     const std::string topNodeName = "WindowElement";
 
