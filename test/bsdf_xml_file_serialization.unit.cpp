@@ -4,7 +4,7 @@
 
 #include "bsdfdata/Parser.hpp"
 
-#include "test/helper/BSDFXML/TestHelper.hpp"
+#include "test/helper/bsdfxml/TestHelper.hpp"
 
 TEST(BSDFXMLFileSerialization, Load2011SA1SmallMaterialCommaSeparated)
 {
