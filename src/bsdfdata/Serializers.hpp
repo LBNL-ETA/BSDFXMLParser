@@ -428,7 +428,13 @@ namespace BSDFData
         std::string serializeRow(const std::vector<double> & row)
         {
             std::ostringstream rowStream;
-            std::copy(row.begin(), row.end(), std::ostream_iterator<double>(rowStream, ", "));
+
+            // Transform each element into a formatted string and join them with ", "
+            std::transform(row.begin(), row.end(), std::ostream_iterator<std::string>(rowStream, ", "),
+                           [](double value) {
+                               return FileParse::formatDouble(value, 5, 1, 0.99);
+                           });
+
             return rowStream.str();
         }
     }   // anonymous namespace
