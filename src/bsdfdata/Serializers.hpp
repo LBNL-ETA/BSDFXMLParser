@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <regex>
 #include <iterator>
+#include <cmath>
 
 #include <fileParse/Common.hxx>
 #include <fileParse/Optional.hxx>
@@ -398,7 +399,7 @@ namespace BSDFData
             {
                 throw std::runtime_error("Non-square matrix");
             }
-            size_t size = static_cast<size_t>(intPart);
+            const auto size = static_cast<size_t>(intPart);
             std::vector<double> inner;
             inner.resize(size);
             std::vector<std::vector<double>> m(size, inner);
