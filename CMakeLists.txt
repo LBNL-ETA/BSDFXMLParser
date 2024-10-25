@@ -40,16 +40,10 @@ include(FetchContent)
 # Test from FileParse should not be visible here
 set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
-# Define the version in a single variable
-set(FILEPARSE_BRANCH main)
-
-# Set the global property once using the variable
-set_property(GLOBAL PROPERTY BSDFXMLPARSER_FILEPARSE_VERSION ${FILEPARSE_BRANCH})
-
 FetchContent_Declare(
     FileParse
     GIT_REPOSITORY https://github.com/LBNL-ETA/FileParse.git
-    GIT_TAG ${FILEPARSE_BRANCH}
+    GIT_TAG main
 )
 FetchContent_MakeAvailable(FileParse)
 
