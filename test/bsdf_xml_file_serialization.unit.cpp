@@ -202,3 +202,41 @@ TEST(BSDFXMLFileSerialization, Save2011SA1Small)
 
     std::filesystem::remove(temp_path);
 }
+
+TEST(BSDFXMLFileSerialization, Save2011SA1Small_SingleColumnScatteringData)
+{
+    SCOPED_TRACE("Begin Test: Save 2011-SA1-Small-CommaSeparated-SingleColumnScattering.XML");
+    std::filesystem::path product_path(TEST_DATA_DIR);
+    product_path /= "products";
+    product_path /= "2011-SA1-Small-CommaSeparated-SingleColumnScattering.XML";
+
+    // Load the XML file to create a product object
+    auto product = BSDFData::loadWindowElementFromFile(product_path.string());
+    ASSERT_TRUE(product.has_value());
+
+    // Save the product object to a temporary file
+    std::filesystem::path temp_path = "temp_2011-SA1-Small.xml";
+      //std::filesystem::temp_directory_path() / "temp_2011-SA1-Small.xml";
+    ASSERT_TRUE(BSDFData::saveToFile(*product, temp_path.string()) == 0);
+
+    // Load the serialized file back
+    auto serialized_product = BSDFData::loadWindowElementFromFile(temp_path.string());
+    ASSERT_TRUE(serialized_product.has_value());
+
+    // Compare the original product with the serialized product
+    EXPECT_EQ(product->windowElementType, serialized_product->windowElementType);
+    Helper::compareMaterial(product->optical.layer.material.value(),
+                            serialized_product->optical.layer.material.value());
+    Helper::compareDataDefinition(product->optical.layer.dataDefinition.value(),
+                                  serialized_product->optical.layer.dataDefinition.value());
+
+    ASSERT_EQ(product->optical.layer.wavelengthData.size(),
+              serialized_product->optical.layer.wavelengthData.size());
+    for(size_t i = 0; i < product->optical.layer.wavelengthData.size(); ++i)
+    {
+        Helper::compareWavelengthData(product->optical.layer.wavelengthData[i],
+                                      serialized_product->optical.layer.wavelengthData[i]);
+    }
+
+    std::filesystem::remove(temp_path);
+}

@@ -192,7 +192,8 @@ namespace BSDFData
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::LengthWithCavity & lengthWithCavity)
+    NodeAdapter & operator<<(NodeAdapter & node,
+                             const BSDFData::LengthWithCavity & lengthWithCavity)
     {
         using FileParse::operator<<;   // operators for basic C++ types are in the FileParse
                                        // namespace
@@ -389,25 +390,43 @@ namespace BSDFData
 
             return result;
         }
+
+        std::vector<std::vector<double>> convertToSquareMatrix(std::vector<double> const & v)
+        {
+            double intPart;
+            if(std::modf(std::sqrt(v.size()), &intPart) != 0)
+            {
+                throw std::runtime_error("Non-square matrix");
+            }
+            size_t size = static_cast<size_t>(intPart);
+            std::vector<double> inner;
+            inner.resize(size);
+            std::vector<std::vector<double>> m(size, inner);
+            for(size_t row = 0; row < size; ++row)
+            {
+                for(size_t col = 0; col < size; ++col)
+                {
+                    m[row][col] = v[row * size + col];
+                }
+            }
+            return m;
+        }
     }   // namespace
 
     /// Parses a string representation of scattering data into a vector of vectors of doubles.
     inline BSDFData::ScatteringData parseScatteringData(const std::string & value)
     {
-        BSDFData::ScatteringData scatteringData;
+        std::vector<double> data;
         std::istringstream inputStream(value);
         std::string line;
 
         while(std::getline(inputStream, line))
         {
             auto row = parseRow(line);
-            if(!row.empty())
-            {
-                scatteringData.push_back(row);
-            }
+            data.insert(data.end(), row.begin(), row.end());
         }
 
-        return scatteringData;
+        return convertToSquareMatrix(data);
     }
 
     template<typename NodeAdapter>
@@ -430,10 +449,10 @@ namespace BSDFData
             std::ostringstream rowStream;
 
             // Transform each element into a formatted string and join them with ", "
-            std::transform(row.begin(), row.end(), std::ostream_iterator<std::string>(rowStream, ", "),
-                           [](double value) {
-                               return FileParse::formatDouble(value, 5, 1, 0.99);
-                           });
+            std::transform(row.begin(),
+                           row.end(),
+                           std::ostream_iterator<std::string>(rowStream, ", "),
+                           [](double value) { return FileParse::formatDouble(value, 5, 1, 0.99); });
 
             return rowStream.str();
         }
@@ -587,4 +606,4 @@ namespace BSDFData
         return node;
     }
 
-}   // namespace BSDFXML
+}   // namespace BSDFData
