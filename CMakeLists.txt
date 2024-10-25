@@ -41,7 +41,7 @@ include(FetchContent)
 set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
 # Keeps required verson of FileParse for this component. Needed for parents to check consistency of the packages.
-set(BSDFXMLPARSER_FILEPARSE_VERSION "main")
+set(BSDFXMLPARSER_FILEPARSE_VERSION "main" CACHE INTERNAL "Required FileParse version for BSDFXMLParser")
 
 FetchContent_Declare(
     FileParse
