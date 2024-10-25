@@ -37,27 +37,18 @@ endif()
 
 include(FetchContent)
 
-if(NOT TARGET xmlParser)
-    FetchContent_Declare(
-        xmlParser
-        GIT_REPOSITORY https://github.com/LBNL-ETA/XMLParser.git
-        GIT_TAG "v1.0.1"
-    )
+# Test from FileParse should not be visible here
+set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
-    FetchContent_MakeAvailable(xmlParser)
-endif()
+# Keeps required verson of FileParse for this component. Needed for parents to check consistency of the packages.
+set(BSDFXMLPARSER_FILEPARSE_VERSION "main")
 
-if(NOT TARGET FileParse)
-    set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
-
-    FetchContent_Declare(
-        FileParse
-        GIT_REPOSITORY https://github.com/LBNL-ETA/FileParse.git
-        GIT_TAG "main"
-    )
-
-    FetchContent_MakeAvailable(FileParse)
-endif()
+FetchContent_Declare(
+    FileParse
+    GIT_REPOSITORY https://github.com/LBNL-ETA/FileParse.git
+    GIT_TAG ${BSDFXMLPARSER_FILEPARSE_VERSION}
+)
+FetchContent_MakeAvailable(FileParse)
 
 # Set include directories for FileParse
 set(FileParse_INCLUDE_DIRS "${fileparse_SOURCE_DIR}/include")
