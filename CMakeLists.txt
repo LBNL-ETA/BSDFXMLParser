@@ -40,13 +40,16 @@ include(FetchContent)
 # Test from FileParse should not be visible here
 set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
-# Keeps required verson of FileParse for this component. Needed for parents to check consistency of the packages.
-set(BSDFXMLPARSER_FILEPARSE_VERSION "main" CACHE INTERNAL "Required FileParse version for BSDFXMLParser")
+# Define the version in a single variable
+set(FILEPARSE_BRANCH main)
+
+# Set the global property once using the variable
+set_property(GLOBAL PROPERTY BSDFXMLPARSER_FILEPARSE_VERSION ${FILEPARSE_BRANCH})
 
 FetchContent_Declare(
     FileParse
     GIT_REPOSITORY https://github.com/LBNL-ETA/FileParse.git
-    GIT_TAG ${BSDFXMLPARSER_FILEPARSE_VERSION}
+    GIT_TAG ${FILEPARSE_BRANCH}
 )
 FetchContent_MakeAvailable(FileParse)
 
