@@ -12,6 +12,9 @@ add_library( ${LIB_NAME}
 target_link_libraries(${LIB_NAME} PRIVATE xmlParser)
 target_link_libraries(${LIB_NAME} PRIVATE FileParse)
 
+# Set a property on the existing target
+set_property(TARGET ${LIB_NAME} PROPERTY variable_name "test")
+
 if(NOT "${fPIC}")
   set(fPIC ON)
 endif()
