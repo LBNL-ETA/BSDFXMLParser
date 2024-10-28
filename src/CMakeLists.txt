@@ -12,8 +12,8 @@ add_library( ${LIB_NAME}
 target_link_libraries(${LIB_NAME} PRIVATE xmlParser)
 target_link_libraries(${LIB_NAME} PRIVATE FileParse)
 
-# Set a property on the existing target
-set_property(TARGET ${LIB_NAME} PROPERTY variable_name "test")
+# Setting variable for parent projects so it can be checked if same version is used
+set_property(TARGET ${LIB_NAME} PROPERTY FileParse_Branch ${FileParse_Branch})
 
 if(NOT "${fPIC}")
   set(fPIC ON)

@@ -40,10 +40,12 @@ include(FetchContent)
 # Test from FileParse should not be visible here
 set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
+set(FileParse_Branch "main")
+
 FetchContent_Declare(
     FileParse
     GIT_REPOSITORY https://github.com/LBNL-ETA/FileParse.git
-    GIT_TAG main
+    GIT_TAG ${FileParse_Branch}
 )
 FetchContent_MakeAvailable(FileParse)
 
