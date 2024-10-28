@@ -9,7 +9,6 @@ add_library( ${LIB_NAME}
         bsdfdata/EnumSerializers.hpp
         bsdfdata/Serializers.hpp)
 
-target_link_libraries(${LIB_NAME} PRIVATE xmlParser)
 target_link_libraries(${LIB_NAME} PRIVATE FileParse)
 
 # Setting variable for parent projects so it can be checked if same version is used
