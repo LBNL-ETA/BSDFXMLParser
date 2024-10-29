@@ -70,3 +70,6 @@ if(BUILD_BSDFXMLParser_Tests)
     add_test(NAME BSDFXMLParser-test
              COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/BSDFXMLParser-test --gtest_catch_exceptions=0)
 endif()
+
+# Setting variable for parent projects so it can be checked if same version is used
+set_property(TARGET ${LIB_NAME} PROPERTY FileParse_Branch ${FileParse_Branch})
