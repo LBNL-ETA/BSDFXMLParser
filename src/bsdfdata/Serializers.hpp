@@ -372,7 +372,7 @@ namespace BSDFData
         std::vector<double> parseRow(const std::string & line)
         {
             std::vector<double> result;
-            std::regex regex("[,\t]");   // Regular expression to match commas or tabs
+            std::regex regex("[ ,\t]");   // Regular expression to match space, commas, or tabs
             std::sregex_token_iterator iter(line.begin(), line.end(), regex, -1);
             std::sregex_token_iterator end;
 
