@@ -40,7 +40,7 @@ include(FetchContent)
 # Test from FileParse should not be visible here
 set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
-set(FileParse_Branch "Version_1.0.1")
+set(FileParse_Branch "dec_2024_parsing")
 
 FetchContent_Declare(
     FileParse
