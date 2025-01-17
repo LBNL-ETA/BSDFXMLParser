@@ -73,6 +73,13 @@ namespace BSDFData
     {
         std::optional<std::string> format;
         std::optional<LengthUnit> unit;
+
+        // Introduced to handle any geometry from
+        std::optional<Length> width;
+        std::optional<Length> height;
+        std::optional<double> angle;
+        std::optional<Length> spacing;
+
         std::optional<Length> blindSlatThickness;
         std::optional<Length> blindCurvature;
         std::optional<Length> blindWidth;
@@ -88,7 +95,9 @@ namespace BSDFData
         std::optional<LengthWithCavity> cellularShadeSideWallLength;
         std::optional<LengthWithCavity> pleatedShadeCellHeight;
         std::optional<LengthWithCavity> pleatedShadeCellSideWallLength;
-        std::optional<Length> mgfBlock;
+        std::optional<std::string> mgfBlock;
+
+        // These fields are used to store data from thmx file
     };
 
     struct ThetaBounds
@@ -162,4 +171,4 @@ namespace BSDFData
         std::optional<std::string> Checksum;
         Optical optical;
     };
-}   // namespace BSDFXML
+}   // namespace BSDFData

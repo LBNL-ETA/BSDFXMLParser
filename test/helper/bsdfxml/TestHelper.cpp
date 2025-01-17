@@ -25,6 +25,26 @@ namespace Helper
         }
     }
 
+    void compareLength(const BSDFData::Length & expected, const BSDFData::Length & actual)
+    {
+        EXPECT_DOUBLE_EQ(expected.value, actual.value);
+        EXPECT_EQ(expected.unit, actual.unit);
+    }
+
+    void compareLength(const std::optional<BSDFData::Length> & expected,
+                       const std::optional<BSDFData::Length> & actual)
+    {
+        if(expected.has_value())
+        {
+            ASSERT_TRUE(actual.has_value());
+            compareLength(expected.value(), actual.value());
+        }
+        else
+        {
+            EXPECT_FALSE(actual.has_value());
+        }
+    }
+
     void compareWavelength(const BSDFData::Wavelength & expected, const BSDFData::Wavelength & actual)
     {
         EXPECT_EQ(expected.value, actual.value);
