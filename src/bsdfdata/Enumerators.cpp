@@ -11,7 +11,8 @@ namespace BSDFData
 
     WindowElementType windowElementTypeFromString(std::string_view type)
     {
-        return FileParse::enumFromString(
+        // In our current XML any caps were used to write out the values
+        return FileParse::enumFromStringCaseInsensitive(
           type, WindowElementTypeStrings, WindowElementType::Unknown);
     }
 
@@ -35,7 +36,9 @@ namespace BSDFData
 
     DeviceType DeviceTypeFromString(std::string_view type)
     {
-        return FileParse::enumFromString(type, DeviceTypeStrings, DeviceType::Unknown);
+        // In our current XML any caps were used to write out the values
+        return FileParse::enumFromStringCaseInsensitive(
+          type, DeviceTypeStrings, DeviceType::Unknown);
     }
 
     std::string DeviceTypeToString(DeviceType type)
@@ -47,7 +50,8 @@ namespace BSDFData
 
     IncidentDataStructure IncidentDataStructureFromString(std::string_view type)
     {
-        return FileParse::enumFromString(
+        // In our current XML any caps were used to write out the values
+        return FileParse::enumFromStringCaseInsensitive(
           type, IncidentDataStructureStrings, IncidentDataStructure::Unknown);
     }
 
@@ -66,7 +70,8 @@ namespace BSDFData
 
     WavelengthDataDirection WavelengthDataDirectionFromString(std::string_view type)
     {
-        return FileParse::enumFromString(
+        // In our current XML any caps were used to write out the values
+        return FileParse::enumFromStringCaseInsensitive(
           type, WavelengthDataDirectionStrings, WavelengthDataDirection::Unknown);
     }
 
@@ -80,7 +85,8 @@ namespace BSDFData
 
     ScatteringDataType ScatteringDataTypeFromString(std::string_view type)
     {
-        return FileParse::enumFromString(
+        // In our current XML any caps were used to write out the values
+        return FileParse::enumFromStringCaseInsensitive(
           type, ScatteringDataTypeStrings, ScatteringDataType::Unknown);
     }
 
@@ -105,7 +111,9 @@ namespace BSDFData
 
     WavelengthUnit WavelengthUnitFromString(std::string_view type)
     {
-        return FileParse::enumFromString(type, WavelengthUnitStrings, WavelengthUnit::Unknown);
+        // In our current XML any caps were used to write out the values
+        return FileParse::enumFromStringCaseInsensitive(
+          type, WavelengthUnitStrings, WavelengthUnit::Unknown);
     }
 
     std::string WavelengthUnitToString(WavelengthUnit type)
@@ -117,7 +125,9 @@ namespace BSDFData
 
     LengthUnit LengthUnitFromString(std::string_view type)
     {
-        return FileParse::enumFromString(type, LengthUnitStrings, LengthUnit::Unknown);
+        // In our current XML any caps were used to write out the values
+        return FileParse::enumFromStringCaseInsensitive(
+          type, LengthUnitStrings, LengthUnit::Unknown);
     }
 
     std::string LengthUnitToString(LengthUnit type)
@@ -129,11 +139,13 @@ namespace BSDFData
 
     ConductivityUnit ConductivityUnitFromString(std::string_view type)
     {
-        return FileParse::enumFromString(type, ConductivityUnitStrings, ConductivityUnit::Unknown);
+        // In our current XML any caps were used to write out the values
+        return FileParse::enumFromStringCaseInsensitive(
+          type, ConductivityUnitStrings, ConductivityUnit::Unknown);
     }
 
     std::string ConductivityUnitToString(ConductivityUnit type)
     {
         return FileParse::enumToString(type, ConductivityUnitStrings);
     }
-}   // namespace BSDFXML
+}   // namespace BSDFData

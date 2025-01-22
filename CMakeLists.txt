@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(BSDFXMLParser VERSION 0.0.1 LANGUAGES CXX)
+project(BSDFXMLParser VERSION 0.0.2 LANGUAGES CXX)
 set(LIB_NAME ${PROJECT_NAME})
 
 if (MSVC)
@@ -40,7 +40,7 @@ include(FetchContent)
 # Test from FileParse should not be visible here
 set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
-set(FileParse_Branch "dec_2024_parsing")
+set(FileParse_Branch "CapsInsensitiveEnums")
 
 FetchContent_Declare(
     FileParse
@@ -73,3 +73,11 @@ endif()
 
 # Setting variable for parent projects so it can be checked if same version is used
 set_property(TARGET ${LIB_NAME} PROPERTY FileParse_Branch ${FileParse_Branch})
+
+if (MSVC)
+    # Set warning level to 4 for MSVC
+    add_compile_options(/W4)
+else()
+    # Set warning level to all for other compilers (e.g., GCC, Clang)
+    add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
