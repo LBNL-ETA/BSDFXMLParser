@@ -75,10 +75,11 @@ namespace BSDFData
         std::optional<LengthUnit> unit;
 
         // Introduced to handle any geometry from
-        std::optional<Length> width;
-        std::optional<Length> height;
+        // Not using Length because input will always be in meters
+        std::optional<double> width;
+        std::optional<double> height;
         std::optional<double> angle;
-        std::optional<Length> spacing;
+        std::optional<double> spacing;
 
         std::optional<Length> blindSlatThickness;
         std::optional<Length> blindCurvature;

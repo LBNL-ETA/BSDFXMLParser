@@ -7,7 +7,7 @@ BSDF-v1.4.xsd">
 			<Material>
 				<Name>Satine 5500 5%, White Pearl </Name>
 				<Manufacturer>Nysan</Manufacturer>
-				<Thickness unit="Millimeter">1</Thickness>
+				<Thickness unit="miLLimeter">1</Thickness>
 				<DeviceType>Other</DeviceType>
 				<ThermalConductivity>0.15</ThermalConductivity>
 				<EmissivityFront>0.79626</EmissivityFront>

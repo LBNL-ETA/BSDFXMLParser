@@ -3,6 +3,7 @@
 #include <filesystem>
 
 #include "bsdfdata/Parser.hpp"
+#include "helper/Common.hpp"
 
 #include "test/helper/bsdfxml/TestHelper.hpp"
 
@@ -37,11 +38,11 @@ TEST(THMZFile, Deserialization)
     Helper::compareMaterial(expectedMaterial, product->optical.layer.material.value());
 
     ASSERT_TRUE(product->optical.layer.geometry.has_value());
-    Helper::compareLength(BSDFData::Length{25, BSDFData::LengthUnit::Millimeter}, product->optical.layer.geometry->width);
-    Helper::compareLength(BSDFData::Length{0.045, BSDFData::LengthUnit::Meter}, product->optical.layer.geometry->height);
+    Helper::compareOptional(0.025, product->optical.layer.geometry->width);
+    Helper::compareOptional(0.045, product->optical.layer.geometry->height);
     ASSERT_TRUE(product->optical.layer.geometry->angle.has_value());
     EXPECT_DOUBLE_EQ(23.0, product->optical.layer.geometry->angle.value());
-    Helper::compareLength(BSDFData::Length{12, BSDFData::LengthUnit::Millimeter}, product->optical.layer.geometry->spacing);
+    Helper::compareOptional(0.012, product->optical.layer.geometry->spacing);
     ASSERT_TRUE(product->optical.layer.geometry->mgfBlock.has_value());
     EXPECT_EQ("some block text", product->optical.layer.geometry->mgfBlock.value());
 }
@@ -77,11 +78,11 @@ TEST(THMZFile, DeserializationDifferentAttributeCaps)
     Helper::compareMaterial(expectedMaterial, product->optical.layer.material.value());
 
     ASSERT_TRUE(product->optical.layer.geometry.has_value());
-    Helper::compareLength(BSDFData::Length{25, BSDFData::LengthUnit::Millimeter}, product->optical.layer.geometry->width);
-    Helper::compareLength(BSDFData::Length{0.045, BSDFData::LengthUnit::Meter}, product->optical.layer.geometry->height);
+    Helper::compareOptional(0.025, product->optical.layer.geometry->width);
+    Helper::compareOptional(0.045, product->optical.layer.geometry->height);
     ASSERT_TRUE(product->optical.layer.geometry->angle.has_value());
     EXPECT_DOUBLE_EQ(23.0, product->optical.layer.geometry->angle.value());
-    Helper::compareLength(BSDFData::Length{12, BSDFData::LengthUnit::Millimeter}, product->optical.layer.geometry->spacing);
+    Helper::compareOptional(0.012, product->optical.layer.geometry->spacing);
     ASSERT_TRUE(product->optical.layer.geometry->mgfBlock.has_value());
     EXPECT_EQ("some block text", product->optical.layer.geometry->mgfBlock.value());
 }

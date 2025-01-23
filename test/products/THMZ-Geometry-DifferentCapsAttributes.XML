@@ -17,15 +17,15 @@ BSDF-v1.4.xsd">
 				<AERCAcceptance>@</AERCAcceptance>
 			</Material>
 			<Geometry>
-			    <Width unit="millimeter">
-					25
+			    <Width>
+					0.025
 				</Width>
-				<Height unit="meter">
+				<Height>
 					0.045
 				</Height>
 				<Angle>23</Angle>
-				<Spacing unit="MiLLimeter">
-					12
+				<Spacing>
+					0.012
 				</Spacing>
 				<MGFblock unit="meter">
 					some block text
