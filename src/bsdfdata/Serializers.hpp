@@ -210,11 +210,17 @@ namespace BSDFData
     }
 
     template<typename NodeAdapter>
-    const NodeAdapter & operator>>(const NodeAdapter & node, BSDFData::Geometry & geometry)
+    const NodeAdapter & operator>>(const NodeAdapter & node, Geometry & geometry)
     {
         FileParse::loadAttribute<NodeAdapter, LengthUnit>(
           node, "unit", geometry.unit, LengthUnitFromString);
         FileParse::loadAttribute(node, "format", geometry.format);
+
+        node >> FileParse::Child{"Width", geometry.width};
+        node >> FileParse::Child{"Height", geometry.height};
+        node >> FileParse::Child{"Angle", geometry.angle};
+        node >> FileParse::Child{"Spacing", geometry.spacing};
+
         node >> FileParse::Child{"BlindSlatThickness", geometry.blindSlatThickness};
         node >> FileParse::Child{"BlindCurvature", geometry.blindCurvature};
         node >> FileParse::Child{"BlindWidth", geometry.blindWidth};
@@ -234,17 +240,23 @@ namespace BSDFData
         node >> FileParse::Child{"PleatedShadeCellHeight", geometry.pleatedShadeCellHeight};
         node >> FileParse::Child{"PleatedShadeCellSideWallLength",
                                  geometry.pleatedShadeCellSideWallLength};
-        node >> FileParse::Child{"MgfBlock", geometry.mgfBlock};
+        node >> FileParse::Child{"MGFblock", geometry.mgfBlock};
 
         return node;
     }
 
     template<typename NodeAdapter>
-    NodeAdapter & operator<<(NodeAdapter & node, const BSDFData::Geometry & geometry)
+    NodeAdapter & operator<<(NodeAdapter & node, const Geometry & geometry)
     {
         FileParse::saveAttribute<NodeAdapter, LengthUnit>(
           node, "unit", geometry.unit, LengthUnitToString);
         FileParse::saveAttribute(node, "format", geometry.format);
+
+        node << FileParse::Child{"Width", geometry.width};
+        node << FileParse::Child{"Height", geometry.height};
+        node << FileParse::Child{"Angle", geometry.angle};
+        node << FileParse::Child{"Spacing", geometry.spacing};
+
         node << FileParse::Child{"BlindSlatThickness", geometry.blindSlatThickness};
         node << FileParse::Child{"BlindCurvature", geometry.blindCurvature};
         node << FileParse::Child{"BlindWidth", geometry.blindWidth};
@@ -264,7 +276,7 @@ namespace BSDFData
         node << FileParse::Child{"PleatedShadeCellHeight", geometry.pleatedShadeCellHeight};
         node << FileParse::Child{"PleatedShadeCellSideWallLength",
                                  geometry.pleatedShadeCellSideWallLength};
-        node << FileParse::Child{"MgfBlock", geometry.mgfBlock};
+        node << FileParse::Child{"MGFblock", geometry.mgfBlock};
 
         return node;
     }
@@ -372,7 +384,7 @@ namespace BSDFData
         std::vector<double> parseRow(const std::string & line)
         {
             std::vector<double> result;
-            std::regex regex("[,\t]");   // Regular expression to match commas or tabs
+            std::regex regex("[ ,\t]");   // Regular expression to match space, commas, or tabs
             std::sregex_token_iterator iter(line.begin(), line.end(), regex, -1);
             std::sregex_token_iterator end;
 

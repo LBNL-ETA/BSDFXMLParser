@@ -7,7 +7,7 @@ BSDF-v1.4.xsd">
 			<Material>
 				<Name>Satine 5500 5%, White Pearl </Name>
 				<Manufacturer>Nysan</Manufacturer>
-				<Thickness unit="miLLimeter">1</Thickness>
+				<Thickness unit="Millimeter">1</Thickness>
 				<DeviceType>Other</DeviceType>
 				<ThermalConductivity>0.15</ThermalConductivity>
 				<EmissivityFront>0.79626</EmissivityFront>
@@ -16,6 +16,21 @@ BSDF-v1.4.xsd">
 				<PermeabilityFactor>0.049855</PermeabilityFactor>
 				<AERCAcceptance>@</AERCAcceptance>
 			</Material>
+			<Geometry>
+			    <Width>
+					0.025
+				</Width>
+				<Height>
+					0.045
+				</Height>
+				<Angle>23</Angle>
+				<Spacing>
+					0.012
+				</Spacing>
+				<MGFblock unit="meter">
+					some block text
+				</MGFblock>				
+			</Geometry>	
 			<DataDefinition>
 				<IncidentDataStructure>Columns</IncidentDataStructure>
 				<AngleBasis>
@@ -105,11 +120,8 @@ BSDF-v1.4.xsd">
 					<RowAngleBasis>LBNL/Klems Full</RowAngleBasis>
 					<ScatteringDataType>BTDF</ScatteringDataType>
 					<ScatteringData>
-						2.063833,
-						0.014938,
-
-						0.014954,
-						2.027935,
+						2.063833,   0.014938,
+						0.014954,   2.027935,
 					</ScatteringData>
 				</WavelengthDataBlock>
 			</WavelengthData>
@@ -124,11 +136,8 @@ BSDF-v1.4.xsd">
 					<RowAngleBasis>LBNL/Klems Full</RowAngleBasis>
 					<ScatteringDataType>BTDF</ScatteringDataType>
 					<ScatteringData>
-						2.063833,
-						0.014938,
-
-						0.014954,
-						2.027935,
+						2.063833,   0.014938,
+						0.014954,   2.027935,
 					</ScatteringData>
 				</WavelengthDataBlock>
 			</WavelengthData>

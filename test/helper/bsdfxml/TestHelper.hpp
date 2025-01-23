@@ -8,18 +8,30 @@ namespace Helper
     void compareThickness(const std::optional<BSDFData::Thickness> & expected,
                           const std::optional<BSDFData::Thickness> & actual);
 
-    void compareWavelength(const BSDFData::Wavelength & expected, const BSDFData::Wavelength & actual);
+    void compareLength(const BSDFData::Length & expected, const BSDFData::Length & actual);
+    void compareLength(const std::optional<BSDFData::Length> & expected,
+                       const std::optional<BSDFData::Length> & actual);
+
+    void compareWavelength(const BSDFData::Wavelength & expected,
+                           const BSDFData::Wavelength & actual);
     void compareWavelength(const std::optional<BSDFData::Wavelength> & expected,
-                          const std::optional<BSDFData::Wavelength> & actual);
+                           const std::optional<BSDFData::Wavelength> & actual);
 
     void compareMaterial(const BSDFData::Material & expected, const BSDFData::Material & actual);
 
-    void compareThetaBounds(const BSDFData::ThetaBounds & expected, const BSDFData::ThetaBounds & actual);
-    void compareAngleBasisBlock(const BSDFData::AngleBasisBlock & expected, const BSDFData::AngleBasisBlock & actual);
-    void compareAngleBasis(const BSDFData::AngleBasis & expected, const BSDFData::AngleBasis & actual);
-    void compareDataDefinition(const BSDFData::DataDefinition & expected, const BSDFData::DataDefinition & actual);
+    void compareThetaBounds(const BSDFData::ThetaBounds & expected,
+                            const BSDFData::ThetaBounds & actual);
+    void compareAngleBasisBlock(const BSDFData::AngleBasisBlock & expected,
+                                const BSDFData::AngleBasisBlock & actual);
+    void compareAngleBasis(const BSDFData::AngleBasis & expected,
+                           const BSDFData::AngleBasis & actual);
+    void compareDataDefinition(const BSDFData::DataDefinition & expected,
+                               const BSDFData::DataDefinition & actual);
 
-    void compareScatteringData(const BSDFData::ScatteringData & expected, const BSDFData::ScatteringData & actual);
-    void compareWavelengthDataBlock(const BSDFData::WavelengthDataBlock & expected, const BSDFData::WavelengthDataBlock & actual);
-    void compareWavelengthData(const BSDFData::WavelengthData & expected, const BSDFData::WavelengthData & actual);
+    void compareScatteringData(const BSDFData::ScatteringData & expected,
+                               const BSDFData::ScatteringData & actual);
+    void compareWavelengthDataBlock(const BSDFData::WavelengthDataBlock & expected,
+                                    const BSDFData::WavelengthDataBlock & actual);
+    void compareWavelengthData(const BSDFData::WavelengthData & expected,
+                               const BSDFData::WavelengthData & actual);
 }   // namespace Helper

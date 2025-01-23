@@ -25,6 +25,7 @@ add_executable(${PROJECT_TEST_NAME}
     bsdf_xml_file_serialization.unit.cpp
     BSDFXMLEnumerators.unit.cpp
     main.cpp
+    thmz_geometry_serialization.unit.cpp
     helper/Common.hpp
     helper/bsdfxml/TestHelper.hpp
     helper/bsdfxml/TestHelper.cpp

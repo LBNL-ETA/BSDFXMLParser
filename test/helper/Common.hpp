@@ -21,8 +21,8 @@ namespace Helper
 
     // Specialization for comparing optional double values
     template<>
-    void compareOptional(const std::optional<double> & expected,
-                         const std::optional<double> & actual)
+    inline void compareOptional(const std::optional<double> & expected,
+                                const std::optional<double> & actual)
     {
         if(expected.has_value())
         {
@@ -33,6 +33,12 @@ namespace Helper
         {
             EXPECT_FALSE(actual.has_value());
         }
+    }
+
+    inline void compareOptional(const double correct, const std::optional<double> & actual)
+    {
+        ASSERT_TRUE(actual.has_value());
+        EXPECT_DOUBLE_EQ(correct, actual.value());
     }
 
     template<typename T>
@@ -46,7 +52,8 @@ namespace Helper
     }
 
     template<>
-    void compareVector(const std::vector<double> & expected, const std::vector<double> & actual)
+    inline void compareVector(const std::vector<double> & expected,
+                              const std::vector<double> & actual)
     {
         ASSERT_EQ(expected.size(), actual.size());
         for(size_t i = 0; i < expected.size(); ++i)
@@ -55,9 +62,9 @@ namespace Helper
         }
     }
 
-    void compareVector(const std::vector<double> & expected,
-                       const std::vector<double> & actual,
-                       const double tolerance = 1e-6)
+    inline void compareVector(const std::vector<double> & expected,
+                              const std::vector<double> & actual,
+                              const double tolerance = 1e-6)
     {
         ASSERT_EQ(expected.size(), actual.size());
         for(size_t i = 0; i < expected.size(); ++i)

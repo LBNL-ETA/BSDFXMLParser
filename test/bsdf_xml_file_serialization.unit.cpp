@@ -6,6 +6,8 @@
 
 #include "test/helper/bsdfxml/TestHelper.hpp"
 
+#include <fstream>
+
 TEST(BSDFXMLFileSerialization, Load2011SA1SmallMaterialCommaSeparated)
 {
     SCOPED_TRACE("Begin Test: Load 2011-SA1-Small-CommaSeparated.XML");
@@ -14,6 +16,40 @@ TEST(BSDFXMLFileSerialization, Load2011SA1SmallMaterialCommaSeparated)
     product_path /= "2011-SA1-Small-CommaSeparated.XML";
 
     auto product = BSDFData::loadWindowElementFromFile(product_path.string());
+
+    ASSERT_TRUE(product.has_value());
+    EXPECT_EQ(BSDFData::WindowElementType::System, product->windowElementType);
+    ASSERT_TRUE(product->optical.layer.material.has_value());
+
+    // Define the expected material for comparison
+    BSDFData::Material expectedMaterial;
+    expectedMaterial.name = "Satine 5500 5%, White Pearl";
+    expectedMaterial.manufacturer = "Nysan";
+    expectedMaterial.thickness = BSDFData::Thickness{1.0, BSDFData::LengthUnit::Millimeter};
+    expectedMaterial.deviceType = BSDFData::DeviceType::Other;
+    expectedMaterial.thermalConductivity = 0.15;
+    expectedMaterial.airPermeability = std::nullopt;
+    expectedMaterial.emissivityFront = 0.79626;
+    expectedMaterial.emissivityBack = 0.79626;
+    expectedMaterial.TIR = 0.10916;
+    expectedMaterial.effectiveOpennessFraction = std::nullopt;
+    expectedMaterial.permeabilityFactor = 0.049855;
+    expectedMaterial.AERCAcceptance = "@";
+
+    Helper::compareMaterial(expectedMaterial, product->optical.layer.material.value());
+}
+
+TEST(BSDFXMLFileSerialization, Load2011SA1SmallMaterialCommaSeparatedFromString)
+{
+    SCOPED_TRACE("Begin Test: Load 2011-SA1-Small-CommaSeparated.XML");
+    std::filesystem::path product_path(TEST_DATA_DIR);
+    product_path /= "products";
+    product_path /= "2011-SA1-Small-CommaSeparated.XML";
+
+    // load file into std::string
+    std::ifstream file(product_path.string());
+    std::string fileContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    auto product = BSDFData::loadWindowElementFromString(fileContent);
 
     ASSERT_TRUE(product.has_value());
     EXPECT_EQ(BSDFData::WindowElementType::System, product->windowElementType);
