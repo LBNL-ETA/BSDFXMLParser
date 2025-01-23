@@ -40,7 +40,7 @@ include(FetchContent)
 # Test from FileParse should not be visible here
 set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
-set(FileParse_Branch "CapsInsensitiveEnums")
+set(FileParse_Branch "Version_1.0.4")
 
 FetchContent_Declare(
     FileParse
