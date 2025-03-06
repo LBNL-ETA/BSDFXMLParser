@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(BSDFXMLParser VERSION 0.0.2 LANGUAGES CXX)
+project(BSDFXMLParser VERSION 0.0.3 LANGUAGES CXX)
 set(LIB_NAME ${PROJECT_NAME})
 
 if (MSVC)
@@ -8,7 +8,7 @@ if (MSVC)
 endif()
 
 if(NOT "${CMAKE_CXX_STANDARD}")
-    set(CMAKE_CXX_STANDARD 17)
+    set(CMAKE_CXX_STANDARD 20)
 endif()
 
 if(NOT "${CMAKE_CXX_EXTENSIONS}")
@@ -40,7 +40,7 @@ include(FetchContent)
 # Test from FileParse should not be visible here
 set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
-set(FileParse_Branch "Version_1.0.4")
+set(FileParse_Branch "CPP20Conversion")
 
 FetchContent_Declare(
     FileParse
