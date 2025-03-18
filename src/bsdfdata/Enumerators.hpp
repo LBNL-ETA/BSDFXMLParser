@@ -30,6 +30,9 @@ namespace BSDFData
         FrittedGlass,
         CellularShade,
         PleatedShade,
+        RomanShade,
+        RollerShutter,
+        InsulatedQuilts,
         LouveredShutter,
         SolidLayer,
         Other
