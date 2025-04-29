@@ -21,7 +21,7 @@ namespace BSDFData
         return FileParse::enumToString(type, WindowElementTypeStrings);
     }
 
-    const std::array<std::string, 12> DeviceTypeStrings = {"Unknown",
+    const std::array<std::string, 16> DeviceTypeStrings = {"Unknown",
                                                            "Venetian blind horizontal",
                                                            "Venetian blind vertical",
                                                            "Woven shade",
@@ -30,7 +30,11 @@ namespace BSDFData
                                                            "Fritted Glass",
                                                            "Cellular Shade",
                                                            "Pleated Shade",
+                                                           "Roman Shade",
+                                                           "Roller Shutter",
+                                                           "Insulated Quilts",
                                                            "Louvered Shutter",
+                                                           "Awning",
                                                            "Solid Layer",
                                                            "Other"};
 
