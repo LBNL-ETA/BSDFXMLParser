@@ -34,6 +34,7 @@ namespace BSDFData
         RollerShutter,
         InsulatedQuilts,
         LouveredShutter,
+        Awning,
         SolidLayer,
         Other
     };
