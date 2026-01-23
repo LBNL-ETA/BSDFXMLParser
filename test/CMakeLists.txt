@@ -23,6 +23,7 @@ endif()
 
 add_executable(${PROJECT_TEST_NAME}
     bsdf_xml_file_serialization.unit.cpp
+    bsdf_xml_full_file_load.unit.cpp
     BSDFXMLEnumerators.unit.cpp
     main.cpp
     thmz_geometry_serialization.unit.cpp
