@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(BSDFXMLParser VERSION 0.0.4 LANGUAGES CXX)
+project(BSDFXMLParser VERSION 0.0.6 LANGUAGES CXX)
 set(LIB_NAME ${PROJECT_NAME})
 
 if (MSVC)
