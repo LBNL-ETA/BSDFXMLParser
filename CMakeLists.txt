@@ -42,12 +42,14 @@ set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
 set(FileParse_Branch "feature/xmlparser-no-wide-char")
 
-FetchContent_Declare(
-    FileParse
-    GIT_REPOSITORY https://github.com/LBNL-ETA/FileParse.git
-    GIT_TAG ${FileParse_Branch}
-)
-FetchContent_MakeAvailable(FileParse)
+if(NOT TARGET FileParse)
+    FetchContent_Declare(
+        FileParse
+        GIT_REPOSITORY https://github.com/LBNL-ETA/FileParse.git
+        GIT_TAG ${FileParse_Branch}
+    )
+    FetchContent_MakeAvailable(FileParse)
+endif()
 
 # Set include directories for FileParse
 set(FileParse_INCLUDE_DIRS "${fileparse_SOURCE_DIR}/include")
