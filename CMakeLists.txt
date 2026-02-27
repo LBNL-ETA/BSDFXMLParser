@@ -50,6 +50,7 @@ if(NOT TARGET FileParse)
     )
     FetchContent_MakeAvailable(FileParse)
 endif()
+FetchContent_GetProperties(FileParse)
 
 # Set include directories for FileParse
 set(FileParse_INCLUDE_DIRS "${fileparse_SOURCE_DIR}/include")
