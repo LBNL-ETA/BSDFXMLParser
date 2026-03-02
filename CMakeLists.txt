@@ -1,11 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(BSDFXMLParser VERSION 0.0.6 LANGUAGES CXX)
+project(BSDFXMLParser VERSION 0.0.8 LANGUAGES CXX)
 set(LIB_NAME ${PROJECT_NAME})
-
-if (MSVC)
-    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-endif()
 
 if(NOT "${CMAKE_CXX_STANDARD}")
     set(CMAKE_CXX_STANDARD 20)
@@ -40,7 +36,7 @@ include(FetchContent)
 # Test from FileParse should not be visible here
 set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
-set(FileParse_Branch "feature/xmlparser-no-wide-char")
+set(FileParse_Branch "Version_1.1.1")
 
 if(NOT TARGET FileParse)
     FetchContent_Declare(
