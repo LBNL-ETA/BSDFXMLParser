@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(BSDFXMLParser VERSION 0.0.8 LANGUAGES CXX)
+project(BSDFXMLParser VERSION 0.0.9 LANGUAGES CXX)
 set(LIB_NAME ${PROJECT_NAME})
 
 if(NOT "${CMAKE_CXX_STANDARD}")
@@ -36,7 +36,7 @@ include(FetchContent)
 # Test from FileParse should not be visible here
 set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
-set(FileParse_Branch "Version_1.1.1")
+set(FileParse_Branch "Version_1.1.2")
 
 if(NOT TARGET FileParse)
     FetchContent_Declare(
@@ -51,6 +51,8 @@ FetchContent_GetProperties(FileParse)
 # Set include directories for FileParse
 set(FileParse_INCLUDE_DIRS "${fileparse_SOURCE_DIR}/include")
 include_directories(${FileParse_INCLUDE_DIRS})
+
+configure_file(doc/BSDFXMLParser.md.in ${CMAKE_CURRENT_SOURCE_DIR}/doc/BSDFXMLParser.md @ONLY)
 
 # Add your target
 add_subdirectory(src)

@@ -3,8 +3,8 @@ graph TD
     %% Package definitions
     xmlParser[xmlParser<br/><font color='red'>v1.0.4</font>]
     nlohmann_json[nlohmann_json<br/><font color='red'>v3.11.3</font>]
-    FileParse[FileParse<br/><font color='red'>Version_1.1.2</font>]
-    BSDFXMLParser[BSDFXMLParser<br/><font color='red'>v0.0.9</font>]
+    FileParse[FileParse<br/><font color='red'>@FileParse_Branch@</font>]
+    BSDFXMLParser[BSDFXMLParser<br/><font color='red'>v@PROJECT_VERSION@</font>]
 
     %% Package relations
     BSDFXMLParser --> FileParse
