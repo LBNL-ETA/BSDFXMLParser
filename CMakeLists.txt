@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(BSDFXMLParser VERSION 0.0.9 LANGUAGES CXX)
+project(BSDFXMLParser VERSION 0.0.10 LANGUAGES CXX)
 set(LIB_NAME ${PROJECT_NAME})
 
 if(NOT "${CMAKE_CXX_STANDARD}")
@@ -36,7 +36,7 @@ include(FetchContent)
 # Test from FileParse should not be visible here
 set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
-set(FileParse_Branch "fix-empty-element-optional")
+set(FileParse_Branch "Version_1.1.3")
 
 if(NOT TARGET FileParse)
     FetchContent_Declare(
