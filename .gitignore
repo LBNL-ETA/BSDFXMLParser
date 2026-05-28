@@ -1,0 +1,16 @@
+# Build directories
+build/
+cmake-build-*/
+
+# Personal CMake presets (per-developer toolchain overrides)
+CMakeUserPresets.json
+
+# IDE files
+.idea/
+.vscode/
+*.user
+.vs/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(BSDFXMLParser VERSION 0.0.10 LANGUAGES CXX)
+project(BSDFXMLParser VERSION 0.0.11 LANGUAGES CXX)
 set(LIB_NAME ${PROJECT_NAME})
 
 if(NOT "${CMAKE_CXX_STANDARD}")
@@ -33,10 +33,25 @@ endif()
 
 include(FetchContent)
 
+# Graceful local-sibling fallback: the `local` CMake preset sets
+# FETCHCONTENT_SOURCE_DIR_<NAME> to ${sourceDir}/../<DepName> for each declared
+# dependency. If a sibling working copy is missing, unset that variable here so
+# FetchContent falls back to the declared remote instead of erroring out.
+foreach(_lbnl_dep FILEPARSE)
+    if(DEFINED FETCHCONTENT_SOURCE_DIR_${_lbnl_dep})
+        if(NOT EXISTS "${FETCHCONTENT_SOURCE_DIR_${_lbnl_dep}}/CMakeLists.txt")
+            message(STATUS
+                "Local sibling for ${_lbnl_dep} not found at "
+                "${FETCHCONTENT_SOURCE_DIR_${_lbnl_dep}}; falling back to remote.")
+            unset(FETCHCONTENT_SOURCE_DIR_${_lbnl_dep} CACHE)
+        endif()
+    endif()
+endforeach()
+
 # Test from FileParse should not be visible here
 set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
-set(FileParse_Branch "Version_1.1.3")
+set(FileParse_Branch "Version_1.1.4")
 
 if(NOT TARGET FileParse)
     FetchContent_Declare(

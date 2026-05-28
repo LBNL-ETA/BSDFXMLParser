@@ -1,10 +1,10 @@
 ```mermaid
 graph TD
     %% Package definitions
-    xmlParser[xmlParser<br/><font color='red'>v1.0.4</font>]
+    xmlParser[xmlParser<br/><font color='red'>v1.0.5</font>]
     nlohmann_json[nlohmann_json<br/><font color='red'>v3.11.3</font>]
-    FileParse[FileParse<br/><font color='red'>Version_1.1.3</font>]
-    BSDFXMLParser[BSDFXMLParser<br/><font color='red'>v0.0.10</font>]
+    FileParse[FileParse<br/><font color='red'>Version_1.1.4</font>]
+    BSDFXMLParser[BSDFXMLParser<br/><font color='red'>v0.0.11</font>]
 
     %% Package relations
     BSDFXMLParser --> FileParse
