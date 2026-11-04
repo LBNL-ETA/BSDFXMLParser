@@ -65,7 +65,7 @@ endif()
 # Test from FileParse should not be visible here
 set(BUILD_FileParse_tests OFF CACHE BOOL "Build FileParse tests" FORCE)
 
-set(FileParse_Branch "Version_1.1.6")
+set(FileParse_Branch "rework/bcs")
 
 if(NOT TARGET FileParse)
     FetchContent_Declare(
