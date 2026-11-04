@@ -14,3 +14,4 @@ CMakeUserPresets.json
 # OS files
 .DS_Store
 Thumbs.db
+doc/BSDFXMLParser.md

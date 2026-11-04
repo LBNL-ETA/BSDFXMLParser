@@ -26,6 +26,10 @@ target_link_libraries(MyTarget PRIVATE BSDFXMLParser)
 
 Update `GIT_TAG` to the desired release tag.
 
+## Dependencies
+
+[Dependency Chart](doc/DependencyChart.md)
+
 ## Building (developers)
 
 `FileParse` (and its transitive deps `xmlParser`, `nlohmann_json`) plus `googletest` are downloaded automatically via CMake FetchContent on first configure. Tests are built by default (`-DBUILD_BSDFXMLParser_Tests=OFF` to disable).
